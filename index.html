@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[NOME] Personal Trainer</title>
+<title>Janaina Munerati · Personal Trainer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #080808;
-  --black-mid: #111111;
+  --black:      #080808;
+  --black-mid:  #111111;
   --black-soft: #1A1A1A;
   --black-card: #141414;
-  --neon: #C8F000;
-  --neon-dim: rgba(200,240,0,0.12);
-  --neon-glow: rgba(200,240,0,0.25);
-  --white: #FFFFFF;
-  --off-white: #F2F2F0;
-  --gray: #888888;
-  --gray-mid: #444444;
+  --gold:       #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dim:   rgba(201,168,76,0.14);
+  --gold-glow:  rgba(201,168,76,0.28);
+  --white:      #FFFFFF;
+  --off-white:  #F2F2F0;
+  --gray:       #888888;
+  --gray-mid:   #333333;
   --gray-light: #CCCCCC;
-  --radius: 4px;
-  --radius-lg: 8px;
+  --radius:     4px;
+  --radius-lg:  10px;
 }
 
 html { scroll-behavior: smooth; }
@@ -33,40 +34,36 @@ body {
   background: var(--black);
   color: var(--white);
   overflow-x: hidden;
-  cursor: default;
 }
 
-/* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
 /* ─── NAV ─── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 1.2rem 2.5rem;
+  padding: 1.1rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(8,8,8,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200,240,0,0.08);
+  background: rgba(8,8,8,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
   transition: border-color 0.3s;
 }
-
-nav.scrolled { border-bottom-color: rgba(200,240,0,0.2); }
+nav.scrolled { border-bottom-color: rgba(201,168,76,0.3); }
 
 .nav-logo {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   letter-spacing: 0.06em;
   color: var(--white);
   text-decoration: none;
 }
-
-.nav-logo span { color: var(--neon); }
+.nav-logo span { color: var(--gold); }
 
 .nav-links {
   display: flex;
@@ -74,38 +71,34 @@ nav.scrolled { border-bottom-color: rgba(200,240,0,0.2); }
   gap: 2rem;
   list-style: none;
 }
-
 .nav-links a {
   color: var(--gray-light);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color 0.2s;
 }
-
-.nav-links a:hover { color: var(--neon); }
+.nav-links a:hover { color: var(--gold); }
 
 .nav-cta {
-  background: var(--neon);
+  background: var(--gold);
   color: var(--black);
   border: none;
   padding: 0.6rem 1.4rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: var(--radius);
   transition: background 0.2s, transform 0.1s;
-  cursor: pointer;
+  white-space: nowrap;
 }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-.nav-cta:hover { background: #d4ff00; transform: translateY(-1px); }
-
-/* Mobile nav toggle */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -113,7 +106,6 @@ nav.scrolled { border-bottom-color: rgba(200,240,0,0.2); }
   cursor: pointer;
   padding: 4px;
 }
-
 .nav-toggle span {
   display: block;
   width: 24px;
@@ -125,42 +117,41 @@ nav.scrolled { border-bottom-color: rgba(200,240,0,0.2); }
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+  padding: 0;
   position: relative;
   overflow: hidden;
-  padding: 6rem 2.5rem 4rem;
 }
 
-/* Diagonal stripe background */
+/* Right half dark panel */
 .hero::before {
   content: '';
   position: absolute;
-  top: 0; right: -10%;
-  width: 55%;
+  top: 0; right: 0;
+  width: 50%;
   height: 100%;
   background: var(--black-soft);
-  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
   z-index: 0;
 }
 
-/* Neon accent line */
+/* Gold diagonal slice */
 .hero::after {
   content: '';
   position: absolute;
-  top: 0; left: 44%;
-  width: 3px;
+  top: 0; left: calc(50% - 2px);
+  width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, var(--neon), transparent);
-  transform: skewX(-8deg);
-  opacity: 0.6;
-  z-index: 1;
+  background: linear-gradient(180deg, transparent 5%, var(--gold) 30%, var(--gold) 70%, transparent 95%);
+  transform: skewX(-3deg);
+  z-index: 2;
 }
 
-.hero-content {
+.hero-left {
   position: relative;
-  z-index: 2;
-  max-width: 620px;
+  z-index: 3;
+  padding: 9rem 3.5rem 5rem 3.5rem;
 }
 
 .hero-tag {
@@ -168,45 +159,43 @@ nav.scrolled { border-bottom-color: rgba(200,240,0,0.2); }
   align-items: center;
   gap: 8px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--neon);
+  color: var(--gold);
   margin-bottom: 1.5rem;
   animation: fadeLeft 0.7s ease both;
 }
-
 .hero-tag::before {
   content: '';
   display: block;
-  width: 28px;
+  width: 24px;
   height: 2px;
-  background: var(--neon);
+  background: var(--gold);
 }
 
 h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
   line-height: 0.92;
   letter-spacing: 0.02em;
   color: var(--white);
   margin-bottom: 1.5rem;
   animation: fadeLeft 0.7s ease 0.1s both;
 }
-
-h1 .neon { color: var(--neon); }
+h1 .gold { color: var(--gold); }
 h1 .outline {
   -webkit-text-stroke: 2px var(--white);
   color: transparent;
 }
 
 .hero-desc {
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: 1rem;
   font-weight: 300;
   color: var(--gray-light);
-  line-height: 1.7;
-  max-width: 460px;
+  line-height: 1.75;
+  max-width: 420px;
   margin-bottom: 2.5rem;
   animation: fadeLeft 0.7s ease 0.2s both;
 }
@@ -215,17 +204,18 @@ h1 .outline {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 3rem;
   animation: fadeLeft 0.7s ease 0.3s both;
 }
 
-.btn-neon {
-  background: var(--neon);
+.btn-gold {
+  background: var(--gold);
   color: var(--black);
   border: none;
-  padding: 1rem 2.2rem;
+  padding: 0.95rem 2.2rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
@@ -236,21 +226,20 @@ h1 .outline {
   cursor: pointer;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
-
-.btn-neon:hover {
-  background: #d4ff00;
+.btn-gold:hover {
+  background: var(--gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(200,240,0,0.3);
+  box-shadow: 0 8px 24px var(--gold-glow);
 }
 
 .btn-ghost {
   background: transparent;
   color: var(--white);
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 1rem 2.2rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.95rem 2.2rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
@@ -258,357 +247,329 @@ h1 .outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
   transition: border-color 0.2s, color 0.2s, transform 0.15s;
 }
-
 .btn-ghost:hover {
-  border-color: var(--neon);
-  color: var(--neon);
+  border-color: var(--gold);
+  color: var(--gold);
   transform: translateY(-2px);
 }
 
-/* Hero stats */
 .hero-stats {
   display: flex;
   gap: 2.5rem;
-  margin-top: 3.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--gray-mid);
   animation: fadeLeft 0.7s ease 0.4s both;
 }
-
 .stat-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  color: var(--neon);
+  font-size: 2.2rem;
+  color: var(--gold);
   line-height: 1;
   display: block;
 }
-
 .stat-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
   margin-top: 4px;
   display: block;
+  line-height: 1.4;
 }
 
-/* Hero image placeholder */
-.hero-image {
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 38%;
-  max-width: 480px;
-  animation: fadeRight 0.8s ease 0.3s both;
-}
-
-.hero-img-placeholder {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--black-card);
-  border: 1px solid var(--gray-mid);
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--gray);
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+/* Hero photo */
+.hero-right {
   position: relative;
+  z-index: 3;
+  height: 100vh;
   overflow: hidden;
 }
-
-.hero-img-placeholder::before {
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+/* Gold overlay bottom fade */
+.hero-right::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(8,8,8,0.8) 100%);
+  bottom: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, var(--black-soft));
+  pointer-events: none;
 }
 
-.img-icon {
-  font-size: 2.5rem;
-  opacity: 0.3;
-}
-
-.hero-img-placeholder span {
-  position: relative;
-  z-index: 1;
-}
-
-/* Neon corner accent */
-.img-corner {
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 40%;
-  height: 3px;
-  background: var(--neon);
-}
-
-/* ─── STATS BAR ─── */
-.stats-bar {
-  background: var(--neon);
-  padding: 1rem 2.5rem;
+/* ─── GOLD BAR ─── */
+.gold-bar {
+  background: var(--gold);
+  padding: 0.9rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
-  overflow: hidden;
 }
-
-.stats-bar-item {
+.gold-bar-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: var(--black);
 }
-
-.stats-bar-num {
+.gold-bar-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1;
 }
-
-.stats-bar-label {
-  font-size: 0.75rem;
+.gold-bar-label {
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.3;
 }
-
-.stats-bar-sep {
+.gold-bar-sep {
   width: 1px;
-  height: 30px;
-  background: rgba(0,0,0,0.2);
+  height: 26px;
+  background: rgba(0,0,0,0.18);
 }
 
-/* ─── SECTION BASE ─── */
-.section {
-  padding: 6rem 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
+/* ─── SECTION TAG ─── */
 .section-tag {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--neon);
+  color: var(--gold);
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
-
 .section-tag::before {
   content: '';
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--neon);
+  background: var(--gold);
   flex-shrink: 0;
 }
 
 h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
   margin-bottom: 1rem;
 }
-
 h2 .outline {
   -webkit-text-stroke: 2px var(--white);
   color: transparent;
 }
-
-h2 .neon { color: var(--neon); }
+h2 .gold { color: var(--gold); }
 
 .section-desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: var(--gray-light);
-  line-height: 1.75;
-  max-width: 520px;
-  margin-bottom: 3rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
 }
 
 /* ─── SOBRE ─── */
-.about-bg {
+.about-wrap {
   background: var(--black-soft);
   padding: 6rem 0;
 }
-
 .about-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: 5rem;
-  align-items: center;
+  align-items: start;
 }
 
-.about-img-wrap {
+/* Photo + frame */
+.about-photo-col { position: relative; }
+.about-photo-frame {
   position: relative;
+  z-index: 1;
 }
-
-.about-img-placeholder {
+.about-photo-frame img {
   width: 100%;
-  aspect-ratio: 4/5;
-  background: var(--black-card);
-  border: 1px solid var(--gray-mid);
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--gray);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  display: block;
+  filter: grayscale(10%) contrast(1.05);
 }
-
-/* Neon frame accent */
-.about-img-wrap::before {
+/* Gold corner accents */
+.about-photo-frame::before {
   content: '';
   position: absolute;
   top: -12px; left: -12px;
-  width: 60%;
-  height: 60%;
-  border-top: 2px solid var(--neon);
-  border-left: 2px solid var(--neon);
+  width: 55%;
+  height: 55%;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
   border-radius: var(--radius) 0 0 0;
-  z-index: 0;
+  z-index: 2;
+  pointer-events: none;
 }
-
-.about-img-wrap::after {
+.about-photo-frame::after {
   content: '';
   position: absolute;
   bottom: -12px; right: -12px;
   width: 40%;
   height: 40%;
-  border-bottom: 2px solid var(--neon);
-  border-right: 2px solid var(--neon);
-  border-radius: 0 0 var(--radius) 0;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  pointer-events: none;
 }
 
-.about-img-placeholder { position: relative; z-index: 1; }
+/* Training photos row */
+.training-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.training-photos img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+  display: block;
+  border: 1px solid var(--gray-mid);
+  transition: border-color 0.2s, transform 0.2s;
+  filter: grayscale(10%) contrast(1.05);
+}
+.training-photos img:hover {
+  border-color: var(--gold);
+  transform: scale(1.02);
+}
 
-.about-certifs {
+/* About text col */
+.about-text-col { padding-top: 0.5rem; }
+
+.about-bio {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: var(--gray-light);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.about-bio strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.certif-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1.5rem;
 }
-
 .certif-tag {
   background: var(--black-card);
   border: 1px solid var(--gray-mid);
   color: var(--gray-light);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 2px;
   transition: border-color 0.2s, color 0.2s;
 }
-
 .certif-tag:hover {
-  border-color: var(--neon);
-  color: var(--neon);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 /* ─── SERVIÇOS ─── */
+.services-wrap {
+  padding: 6rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--gray-mid);
   border: 1px solid var(--gray-mid);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
-
 .service-item {
   background: var(--black-card);
-  padding: 2.5rem 2rem;
+  padding: 2.2rem 1.75rem;
   position: relative;
   transition: background 0.25s;
   cursor: default;
 }
-
 .service-item:hover { background: var(--black-soft); }
-
 .service-item::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0;
   width: 0;
   height: 2px;
-  background: var(--neon);
+  background: var(--gold);
   transition: width 0.35s ease;
 }
-
 .service-item:hover::after { width: 100%; }
-
 .service-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  color: var(--neon-dim);
+  font-size: 2.8rem;
+  color: rgba(201,168,76,0.12);
   line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   transition: color 0.25s;
 }
-
-.service-item:hover .service-num { color: rgba(200,240,0,0.3); }
-
+.service-item:hover .service-num { color: rgba(201,168,76,0.25); }
 .service-item h3 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
-
 .service-item p {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
   color: var(--gray);
   line-height: 1.7;
 }
 
-/* ─── RESULTADOS / ANTES E DEPOIS ─── */
-.results-bg {
+/* ─── RESULTADOS ─── */
+.results-wrap {
   background: var(--black-soft);
   padding: 6rem 0;
 }
-
 .results-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2.5rem;
 }
-
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -620,44 +581,40 @@ h2 .neon { color: var(--neon); }
   overflow: hidden;
   transition: border-color 0.25s, transform 0.2s;
 }
-
 .result-card:hover {
-  border-color: var(--neon);
+  border-color: var(--gold);
   transform: translateY(-4px);
 }
 
+/* Before/After photo split */
 .result-photos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
 }
-
 .result-photo {
   aspect-ratio: 3/4;
-  background: var(--black-soft);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: var(--gray);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 1px solid var(--gray-mid);
+  overflow: hidden;
+  position: relative;
 }
-
-.result-photo .img-icon { font-size: 1.8rem; opacity: 0.25; }
+.result-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.result-card:hover .result-photo img { transform: scale(1.03); }
+.result-photo.before { border-right: 2px solid var(--black); }
+.result-photo.after  { border-left: 2px solid var(--gold); }
 
 /* ANTES / DEPOIS labels */
-.result-photo.before { border-right: none; }
-.result-photo.after { border-left: 1px solid var(--neon); }
-
 .photo-label {
   position: absolute;
   top: 10px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -665,44 +622,40 @@ h2 .neon { color: var(--neon); }
   border-radius: 2px;
   z-index: 2;
 }
-
 .label-before {
   left: 8px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   color: var(--gray-light);
-  border: 1px solid var(--gray-mid);
+  border: 1px solid rgba(255,255,255,0.15);
 }
-
 .label-after {
   right: 8px;
-  background: var(--neon);
+  background: var(--gold);
   color: var(--black);
 }
 
-/* Center divider */
-.result-divider {
+.result-vs {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 28px; height: 28px;
   background: var(--black);
-  border: 2px solid var(--neon);
+  border: 2px solid var(--gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--neon);
-  z-index: 3;
   font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--gold);
+  z-index: 3;
   letter-spacing: 0;
 }
 
 .result-info {
   padding: 1.25rem 1.5rem;
 }
-
 .result-name {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1rem;
@@ -712,82 +665,41 @@ h2 .neon { color: var(--neon); }
   color: var(--white);
   margin-bottom: 0.4rem;
 }
-
 .result-meta {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
-
 .result-badge {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--neon);
-  letter-spacing: 0.08em;
+  color: var(--gold);
+  letter-spacing: 0.06em;
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .result-badge::before {
   content: '';
   width: 4px; height: 4px;
-  background: var(--neon);
+  background: var(--gold);
   border-radius: 50%;
   display: inline-block;
-}
-
-.result-quote {
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: var(--gray);
-  line-height: 1.6;
-  margin-top: 0.6rem;
-  font-style: italic;
-}
-
-/* ADD PHOTO CARD */
-.result-card.add-card {
-  border-style: dashed;
-  border-color: var(--gray-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 1rem;
-  color: var(--gray);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.result-card.add-card:hover {
-  border-color: var(--neon);
-  color: var(--neon);
-  transform: none;
-}
-
-.add-icon {
-  width: 48px; height: 48px;
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 300;
+  flex-shrink: 0;
 }
 
 /* ─── DEPOIMENTOS ─── */
+.depo-wrap {
+  padding: 6rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 .depo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
+  margin-top: 3rem;
 }
-
 .depo-card {
   background: var(--black-card);
   border: 1px solid var(--gray-mid);
@@ -796,295 +708,111 @@ h2 .neon { color: var(--neon); }
   position: relative;
   transition: border-color 0.25s;
 }
-
-.depo-card:hover { border-color: rgba(200,240,0,0.3); }
-
+.depo-card:hover { border-color: rgba(201,168,76,0.35); }
 .depo-card::before {
   content: '"';
   position: absolute;
   top: -0.5rem; left: 1.5rem;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
-  color: var(--neon);
+  font-size: 3.5rem;
+  color: var(--gold);
   line-height: 1;
-  opacity: 0.4;
+  opacity: 0.35;
 }
-
-.depo-stars {
-  color: var(--neon);
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
-}
-
-.depo-text {
-  font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--gray-light);
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
-  font-style: italic;
-}
-
-.depo-author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+.depo-stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 0.85rem; }
+.depo-text { font-size: 0.9rem; font-weight: 300; color: var(--gray-light); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+.depo-author { display: flex; align-items: center; gap: 10px; }
 .depo-avatar {
   width: 36px; height: 36px;
   border-radius: 50%;
-  background: var(--neon-dim);
-  border: 1px solid rgba(200,240,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--neon);
+  font-weight: 700; font-size: 0.9rem; color: var(--gold);
   flex-shrink: 0;
 }
+.depo-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); }
+.depo-role { font-size: 0.7rem; color: var(--gray); margin-top: 2px; }
 
-.depo-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.depo-role {
-  font-size: 0.72rem;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-  margin-top: 1px;
-}
-
-/* ─── PARCERIAS ─── */
-.partners-bg {
+/* ─── CONTATO ─── */
+.contact-wrap {
   background: var(--black-soft);
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
-
-.partners-inner {
+.contact-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2.5rem;
-}
-
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-
-.partner-card {
-  background: var(--black-card);
-  border: 1px solid var(--gray-mid);
-  border-radius: var(--radius);
-  padding: 1.5rem 1.25rem;
-  text-align: center;
-  transition: border-color 0.2s, transform 0.2s;
-  cursor: default;
-}
-
-.partner-card:hover {
-  border-color: rgba(200,240,0,0.4);
-  transform: translateY(-2px);
-}
-
-.partner-logo-placeholder {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: var(--neon-dim);
-  border: 1px solid rgba(200,240,0,0.2);
-  margin: 0 auto 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.partner-card h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 0.25rem;
-}
-
-.partner-card p {
-  font-size: 0.72rem;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-}
-
-.partner-card.add-partner {
-  border-style: dashed;
-  cursor: pointer;
-  color: var(--gray);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 120px;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.partner-card.add-partner:hover {
-  border-color: var(--neon);
-  color: var(--neon);
-  transform: none;
-}
-
-/* ─── CONTATO ─── */
-.contact-section {
-  padding: 6rem 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
 }
-
-.contact-left h2 { margin-bottom: 1rem; }
-
 .contact-left p {
   font-size: 0.95rem;
   font-weight: 300;
   color: var(--gray-light);
-  line-height: 1.75;
+  line-height: 1.8;
   margin-bottom: 2rem;
 }
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1.25rem;
-  background: var(--black-soft);
+.contact-links { display: flex; flex-direction: column; gap: 1rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--black-card);
   border: 1px solid var(--gray-mid);
   border-radius: var(--radius);
   text-decoration: none;
   transition: border-color 0.2s, background 0.2s;
 }
-
-.contact-item:hover {
-  border-color: var(--neon);
-  background: var(--black-card);
-}
-
+.contact-link:hover { border-color: var(--gold); background: var(--black-mid); }
 .contact-icon {
-  width: 36px; height: 36px;
+  width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--neon-dim);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
 }
+.contact-link-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); display: block; }
+.contact-link-value { font-size: 0.9rem; font-weight: 500; color: var(--white); display: block; margin-top: 2px; }
+.contact-arrow { color: var(--gold); margin-left: auto; opacity: 0; transform: translateX(-4px); transition: opacity 0.2s, transform 0.2s; }
+.contact-link:hover .contact-arrow { opacity: 1; transform: translateX(0); }
 
-.contact-item-text {
-  flex: 1;
-}
-
-.contact-item-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  display: block;
-}
-
-.contact-item-value {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--white);
-  display: block;
-  margin-top: 2px;
-}
-
-.contact-arrow {
-  color: var(--neon);
-  font-size: 1rem;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-.contact-item:hover .contact-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* FORM */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
+label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); }
 
 input, select, textarea {
-  background: var(--black-soft);
+  background: var(--black-card);
   border: 1px solid var(--gray-mid);
   border-radius: var(--radius);
   padding: 0.8rem 1rem;
   color: var(--white);
   font-family: 'Barlow', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 300;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
   width: 100%;
   resize: none;
 }
-
-input::placeholder, textarea::placeholder { color: var(--gray-mid); }
-select option { background: var(--black-soft); }
-
-input:focus, select:focus, textarea:focus {
-  border-color: var(--neon);
-  background: var(--black-card);
-}
+input::placeholder, textarea::placeholder { color: #444; }
+select option { background: var(--black-card); }
+input:focus, select:focus, textarea:focus { border-color: var(--gold); background: var(--black-mid); }
 
 .submit-btn {
-  background: var(--neon);
+  background: var(--gold);
   color: var(--black);
   border: none;
   padding: 1rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   border-radius: var(--radius);
@@ -1093,57 +821,25 @@ input:focus, select:focus, textarea:focus {
   width: 100%;
   margin-top: 0.5rem;
 }
-
-.submit-btn:hover {
-  background: #d4ff00;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(200,240,0,0.25);
-}
+.submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 20px var(--gold-glow); }
 
 /* ─── FOOTER ─── */
 footer {
-  background: var(--black-soft);
+  background: var(--black-mid);
   border-top: 1px solid var(--gray-mid);
-  padding: 2.5rem 2.5rem;
+  padding: 2rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
 }
-
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.06em;
-  color: var(--white);
-}
-
-.footer-logo span { color: var(--neon); }
-
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.footer-links a {
-  color: var(--gray);
-  text-decoration: none;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--neon); }
-
-footer p {
-  font-size: 0.75rem;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-}
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--white); }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { color: var(--gray); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+footer p { font-size: 0.72rem; color: var(--gray); }
 
 /* ─── FLOATING WA ─── */
 .wa-float {
@@ -1153,73 +849,49 @@ footer p {
   color: white;
   border-radius: 50%;
   width: 56px; height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 20px rgba(37,211,102,0.4);
   text-decoration: none;
   font-size: 1.5rem;
   z-index: 99;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
 
-.wa-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37,211,102,0.55);
-}
-
-/* ─── SECTION DIVIDER ─── */
-.divider {
-  border: none;
-  border-top: 1px solid var(--gray-mid);
-  margin: 0;
-}
+/* ─── DIVIDER ─── */
+.divider { border: none; border-top: 1px solid var(--gray-mid); margin: 0; }
 
 /* ─── ANIMATIONS ─── */
 @keyframes fadeLeft {
   from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(24px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-
+.fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero::before { display: none; }
+  .hero::after { display: none; }
+  .hero-right { height: 55vw; max-height: 420px; }
+  .hero-left { padding: 7rem 1.5rem 2rem; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
-
-  .hero { padding: 6rem 1.5rem 3rem; }
-  .hero::before { display: none; }
-  .hero::after { display: none; }
-  .hero-image { display: none; }
-  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-
-  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-img-wrap { max-width: 340px; }
-
-  .contact-section { grid-template-columns: 1fr; gap: 3rem; }
-  .form-row { grid-template-columns: 1fr; }
-
-  .section { padding: 4rem 1.5rem; }
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
+}
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .gold-bar { gap: 1rem; padding: 1rem; }
+  .gold-bar-sep { display: none; }
 }
 </style>
 </head>
@@ -1227,12 +899,11 @@ footer p {
 
 <!-- ─── NAV ─── -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">[NOME]<span>.</span></a>
+  <a href="#" class="nav-logo">Janaina<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#resultados">Resultados</a></li>
-    <li><a href="#parcerias">Parcerias</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Treinar comigo</a>
@@ -1243,119 +914,127 @@ footer p {
 
 <!-- ─── HERO ─── -->
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-left">
     <div class="hero-tag">Personal Trainer</div>
     <h1>
-      TRANSFORME<br>
-      SEU <span class="neon">CORPO.</span><br>
+      MUDE<br>
+      SEU <span class="gold">CORPO.</span><br>
       <span class="outline">MUDE SUA</span><br>
       VIDA.
     </h1>
     <p class="hero-desc">
-      Treinos personalizados, método comprovado e acompanhamento real para você alcançar os resultados que sempre quis. Sem atalhos, com consistência.
+      Treinos individualizados, método baseado em ciência e acompanhamento real. Foco em emagrecimento, hipertrofia e qualidade de vida.
     </p>
     <div class="hero-btns">
-      <a href="#contato" class="btn-neon">Quero começar agora →</a>
+      <a href="#contato" class="btn-gold">Quero começar agora →</a>
       <a href="#resultados" class="btn-ghost">Ver resultados</a>
     </div>
     <div class="hero-stats">
       <div>
-        <span class="stat-num">+200</span>
-        <span class="stat-label">Alunos<br>transformados</span>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Treinos<br>individualizados</span>
       </div>
       <div>
-        <span class="stat-num">5+</span>
-        <span class="stat-label">Anos de<br>experiência</span>
+        <span class="stat-num">CREF</span>
+        <span class="stat-label">Profissional<br>certificada</span>
       </div>
       <div>
-        <span class="stat-num">98%</span>
-        <span class="stat-label">Taxa de<br>satisfação</span>
+        <span class="stat-num">Online</span>
+        <span class="stat-label">Atende em<br>qualquer lugar</span>
       </div>
     </div>
   </div>
 
-  <!-- Foto do Personal — substituir pela foto real -->
-  <div class="hero-image">
-    <div class="hero-img-placeholder">
-      <span class="img-icon">📸</span>
-      <span>Foto do Personal</span>
-      <span style="font-size:0.65rem; opacity:0.6;">Substituir pela foto real</span>
-      <div class="img-corner"></div>
-    </div>
+  <div class="hero-right">
+    <img src="jana-foto-personal.jpg" alt="Janaina Munerati Personal Trainer">
   </div>
 </section>
 
-<!-- ─── STATS BAR ─── -->
-<div class="stats-bar">
-  <div class="stats-bar-item">
-    <span class="stats-bar-num">HIPERTROFIA</span>
-    <span class="stats-bar-label">Ganho<br>de massa</span>
+<!-- ─── GOLD BAR ─── -->
+<div class="gold-bar">
+  <div class="gold-bar-item">
+    <span class="gold-bar-num">EMAGRECIMENTO</span>
+    <span class="gold-bar-label">Perda<br>de gordura</span>
   </div>
-  <div class="stats-bar-sep"></div>
-  <div class="stats-bar-item">
-    <span class="stats-bar-num">EMAGRECIMENTO</span>
-    <span class="stats-bar-label">Perda<br>de gordura</span>
+  <div class="gold-bar-sep"></div>
+  <div class="gold-bar-item">
+    <span class="gold-bar-num">HIPERTROFIA</span>
+    <span class="gold-bar-label">Ganho<br>de massa</span>
   </div>
-  <div class="stats-bar-sep"></div>
-  <div class="stats-bar-item">
-    <span class="stats-bar-num">CONDICIONAMENTO</span>
-    <span class="stats-bar-label">Performance<br>atlética</span>
+  <div class="gold-bar-sep"></div>
+  <div class="gold-bar-item">
+    <span class="gold-bar-num">QUALIDADE DE VIDA</span>
+    <span class="gold-bar-label">Saúde e<br>bem-estar</span>
   </div>
-  <div class="stats-bar-sep"></div>
-  <div class="stats-bar-item">
-    <span class="stats-bar-num">REABILITAÇÃO</span>
-    <span class="stats-bar-label">Retorno<br>ao movimento</span>
+  <div class="gold-bar-sep"></div>
+  <div class="gold-bar-item">
+    <span class="gold-bar-num">ONLINE + PRESENCIAL</span>
+    <span class="gold-bar-label">Treino no<br>seu ritmo</span>
   </div>
 </div>
 
 <!-- ─── SOBRE ─── -->
-<div class="about-bg" id="sobre">
-  <div class="about-inner fade-in">
-    <div class="about-img-wrap">
-      <div class="about-img-placeholder">
-        <span class="img-icon">📸</span>
-        <span style="font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray);">Foto do Personal</span>
-        <span style="font-size:0.62rem; opacity:0.5; text-transform:uppercase; letter-spacing:0.08em;">Substituir pela foto real</span>
+<div class="about-wrap fade-in" id="sobre">
+  <div class="about-inner">
+
+    <div class="about-photo-col">
+      <div class="about-photo-frame">
+        <img src="jana-foto-personal.jpg" alt="Janaina Munerati">
+      </div>
+      <div class="training-photos">
+        <img src="jana-treino-1.png" alt="Janaina treinando">
+        <img src="jana-treino-2.png" alt="Janaina treinando">
+        <img src="jana-treino-3.png" alt="Janaina treinando">
       </div>
     </div>
 
-    <div>
+    <div class="about-text-col">
       <div class="section-tag">Sobre</div>
-      <h2>SOU <span class="neon">[NOME]</span><br>SEU PERSONAL</h2>
-      <p class="section-desc" style="margin-bottom:1.5rem;">
-        [Escreva aqui a história e motivação do personal. Por exemplo: "Apaixonado por transformação há mais de 5 anos, acredito que cada corpo tem um potencial único. Meu método une ciência, dedicação e acompanhamento próximo para garantir resultados reais e duradouros."]
+      <h2>SOU A <span class="gold">JANAÍNA</span><br>SUA PERSONAL</h2>
+
+      <p class="about-bio">
+        Sou a Janaína, formada em Educação Física com foco em <strong>emagrecimento, hipertrofia e melhora da qualidade de vida</strong>.
       </p>
-      <p class="section-desc" style="margin-bottom:2rem;">
-        [Complemento: formação, diferenciais, filosofia de treino ou mensagem pessoal para o aluno.]
+      <p class="about-bio">
+        Trabalho com treinos individualizados, respeitando o nível, rotina e objetivos de cada aluno.
       </p>
-      <div class="about-certifs">
-        <span class="certif-tag">CREF Ativo</span>
-        <span class="certif-tag">Musculação</span>
-        <span class="certif-tag">Funcional</span>
-        <span class="certif-tag">Nutrição Esportiva</span>
+      <p class="about-bio">
+        Sou apaixonada pela minha profissão e tenho como propósito espalhar o amor pelo esporte, impactando positivamente uma grande comunidade de pessoas que valorizam a atividade física e a qualidade de vida.
+      </p>
+
+      <div class="certif-row">
+        <span class="certif-tag">Ed. Física</span>
+        <span class="certif-tag">Emagrecimento</span>
+        <span class="certif-tag">Hipertrofia</span>
+        <span class="certif-tag">Treino Presencial</span>
+        <span class="certif-tag">Treino Online</span>
         <span class="certif-tag">Avaliação Física</span>
-        <span class="certif-tag">[Adicionar certificações]</span>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="#contato" class="btn-gold">Agendar aula experimental →</a>
       </div>
     </div>
+
   </div>
 </div>
 
 <!-- ─── SERVIÇOS ─── -->
-<div class="section fade-in" id="servicos">
+<div class="services-wrap fade-in" id="servicos">
   <div class="section-tag">Serviços</div>
-  <h2>COMO POSSO<br>TE <span class="neon">AJUDAR</span></h2>
-  <p class="section-desc">Modalidades de treino adaptadas ao seu objetivo, rotina e nível de condicionamento.</p>
+  <h2>COMO POSSO<br>TE <span class="gold">AJUDAR</span></h2>
+  <p class="section-desc" style="max-width:520px;">Modalidades de treino adaptadas ao seu objetivo, rotina e nível de condicionamento.</p>
 
   <div class="services-grid">
     <div class="service-item">
       <div class="service-num">01</div>
       <h3>Treino Presencial</h3>
-      <p>Acompanhamento individual na academia ou ao ar livre. Treinos periodizados, corrigidos e ajustados semanalmente para máxima evolução.</p>
+      <p>Acompanhamento individual na academia, ao ar livre ou em seu condomínio. Treinos corrigidos e ajustados sob demanda para máxima evolução.</p>
     </div>
     <div class="service-item">
       <div class="service-num">02</div>
       <h3>Treino Online</h3>
-      <p>Planilhas personalizadas com suporte via WhatsApp. Treino e feedback em qualquer lugar do mundo, no seu horário.</p>
+      <p>Treinos personalizados via aplicativo no celular, com pequenos vídeos de demonstração dos exercícios e suporte via WhatsApp. Treino e feedback em qualquer lugar do mundo, no seu horário.</p>
     </div>
     <div class="service-item">
       <div class="service-num">03</div>
@@ -1374,103 +1053,65 @@ footer p {
     </div>
     <div class="service-item">
       <div class="service-num">06</div>
-      <h3>[Adicionar serviço]</h3>
-      <p>Descreva aqui um serviço adicional que o personal oferece, como funcional, reabilitação, preparação esportiva, etc.</p>
+      <h3>Aula Experimental</h3>
+      <p>Uma experiência personalizada para conhecer de perto meu método de treino e acompanhamento. Ideal para quem deseja iniciar com mais segurança e dar o primeiro passo em direção aos seus objetivos.</p>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- ─── RESULTADOS / ANTES E DEPOIS ─── -->
-<div class="results-bg" id="resultados">
-  <div class="results-inner fade-in">
+<!-- ─── RESULTADOS ─── -->
+<div class="results-wrap fade-in" id="resultados">
+  <div class="results-inner">
     <div class="section-tag">Resultados</div>
-    <h2>TRANSFORMAÇÕES<br><span class="neon">REAIS</span></h2>
-    <p class="section-desc">Cada resultado é a prova de comprometimento, método e consistência. Veja as transformações dos alunos.</p>
+    <h2>TRANSFORMAÇÕES<br><span class="gold">REAIS</span></h2>
+    <p class="section-desc" style="max-width:520px;">Cada resultado é a prova de comprometimento, método e consistência. Veja as transformações de quem confiou no processo.</p>
 
     <div class="results-grid">
 
-      <!-- Card resultado 1 -->
+      <!-- Marília -->
       <div class="result-card">
-        <div class="result-photos" style="position:relative;">
+        <div class="result-photos">
           <div class="result-photo before">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Antes</span>
+            <img src="marilia-antes.png" alt="Marília antes">
+            <span class="photo-label label-before">ANTES</span>
           </div>
           <div class="result-photo after">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Depois</span>
+            <img src="marilia-depois.png" alt="Marília depois">
+            <span class="photo-label label-after">DEPOIS</span>
           </div>
-          <span class="photo-label label-before">ANTES</span>
-          <span class="photo-label label-after">DEPOIS</span>
-          <div class="result-divider">VS</div>
+          <div class="result-vs">VS</div>
         </div>
         <div class="result-info">
-          <div class="result-name">[Nome do aluno]</div>
+          <div class="result-name">Marília</div>
           <div class="result-meta">
-            <span class="result-badge">-12kg em 4 meses</span>
+            <span class="result-badge">-6kg em 6 meses</span>
             <span class="result-badge">Emagrecimento</span>
           </div>
-          <p class="result-quote">"[Depoimento do aluno sobre a experiência e resultado obtido com o treino.]"</p>
         </div>
       </div>
 
-      <!-- Card resultado 2 -->
+      <!-- Ana Flávia -->
       <div class="result-card">
-        <div class="result-photos" style="position:relative;">
+        <div class="result-photos">
           <div class="result-photo before">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Antes</span>
+            <img src="ana-antes.png" alt="Ana Flávia antes">
+            <span class="photo-label label-before">ANTES</span>
           </div>
           <div class="result-photo after">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Depois</span>
+            <img src="ana-depois.png" alt="Ana Flávia depois">
+            <span class="photo-label label-after">DEPOIS</span>
           </div>
-          <span class="photo-label label-before">ANTES</span>
-          <span class="photo-label label-after">DEPOIS</span>
-          <div class="result-divider">VS</div>
+          <div class="result-vs">VS</div>
         </div>
         <div class="result-info">
-          <div class="result-name">[Nome do aluno]</div>
+          <div class="result-name">Ana Flávia</div>
           <div class="result-meta">
-            <span class="result-badge">+8kg massa magra</span>
-            <span class="result-badge">Hipertrofia</span>
+            <span class="result-badge">-4kg em 4 meses</span>
+            <span class="result-badge">Emagrecimento</span>
           </div>
-          <p class="result-quote">"[Depoimento do aluno sobre a experiência e resultado obtido com o treino.]"</p>
         </div>
-      </div>
-
-      <!-- Card resultado 3 -->
-      <div class="result-card">
-        <div class="result-photos" style="position:relative;">
-          <div class="result-photo before">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Antes</span>
-          </div>
-          <div class="result-photo after">
-            <span class="img-icon">📸</span>
-            <span style="font-size:0.65rem; color:var(--gray); letter-spacing:0.08em; text-transform:uppercase;">Depois</span>
-          </div>
-          <span class="photo-label label-before">ANTES</span>
-          <span class="photo-label label-after">DEPOIS</span>
-          <div class="result-divider">VS</div>
-        </div>
-        <div class="result-info">
-          <div class="result-name">[Nome do aluno]</div>
-          <div class="result-meta">
-            <span class="result-badge">Definição total</span>
-            <span class="result-badge">6 meses</span>
-          </div>
-          <p class="result-quote">"[Depoimento do aluno sobre a experiência e resultado obtido com o treino.]"</p>
-        </div>
-      </div>
-
-      <!-- Card adicionar mais -->
-      <div class="result-card add-card">
-        <div class="add-icon">+</div>
-        <span>Adicionar resultado</span>
-        <span style="font-size:0.65rem; opacity:0.5;">Inserir foto real aqui</span>
       </div>
 
     </div>
@@ -1478,41 +1119,41 @@ footer p {
 </div>
 
 <!-- ─── DEPOIMENTOS ─── -->
-<div class="section fade-in">
+<div class="depo-wrap fade-in">
   <div class="section-tag">Depoimentos</div>
-  <h2>O QUE DIZEM<br>MEUS <span class="neon">ALUNOS</span></h2>
+  <h2>O QUE DIZEM<br>MINHAS <span class="gold">ALUNAS</span></h2>
 
   <div class="depo-grid">
     <div class="depo-card">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"Nunca tinha conseguido constância em nenhum treino. Com o [NOME] foi diferente, o acompanhamento é próximo e o método realmente funciona. Em 3 meses já vi resultado que não tive em 2 anos."</p>
+      <p class="depo-text">"Nunca tinha conseguido constância em nenhum treino. Com a Janaína foi diferente, o acompanhamento é próximo e o método realmente funciona. Em 4 meses já vi resultado que não tive em 2 anos."</p>
       <div class="depo-author">
         <div class="depo-avatar">A</div>
         <div>
-          <div class="depo-name">[Nome do aluno]</div>
-          <div class="depo-role">Aluno há 6 meses</div>
+          <div class="depo-name">Ana Flávia</div>
+          <div class="depo-role">Aluna presencial</div>
         </div>
       </div>
     </div>
     <div class="depo-card">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"O treino online foi a melhor escolha. Tenho planilha atualizada toda semana, resposta rápida nas dúvidas e resultado real. Recomendo demais para quem não tem tempo de academia presencial."</p>
+      <p class="depo-text">"O treino online foi a melhor escolha. Tenho planilha atualizada, resposta rápida nas dúvidas e resultado real. Ela se importa de verdade com o progresso de cada aluna."</p>
       <div class="depo-author">
         <div class="depo-avatar">M</div>
         <div>
-          <div class="depo-name">[Nome do aluno]</div>
-          <div class="depo-role">Aluno online</div>
+          <div class="depo-name">Marília</div>
+          <div class="depo-role">Aluna presencial</div>
         </div>
       </div>
     </div>
     <div class="depo-card">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"Voltei a treinar depois de uma lesão e o [NOME] foi fundamental na recuperação. Treino seguro, progressivo e ainda perdi gordura no processo. Profissional de verdade."</p>
+      <p class="depo-text">"A Janaína me ajudou a entender que treinar não precisa ser sofrimento. Com ela aprendi a gostar do processo e os resultados vieram naturalmente. Profissional incrível!"</p>
       <div class="depo-author">
-        <div class="depo-avatar">R</div>
+        <div class="depo-avatar">J</div>
         <div>
           <div class="depo-name">[Nome do aluno]</div>
-          <div class="depo-role">Aluno presencial</div>
+          <div class="depo-role">Aluna online</div>
         </div>
       </div>
     </div>
@@ -1521,137 +1162,93 @@ footer p {
 
 <hr class="divider">
 
-<!-- ─── PARCERIAS ─── -->
-<div class="partners-bg" id="parcerias">
-  <div class="partners-inner fade-in">
-    <div class="section-tag">Parcerias</div>
-    <h2>MARCAS QUE<br><span class="neon">CONFIAM</span></h2>
-    <p class="section-desc">Parcerias com marcas do segmento fitness, nutrição e lifestyle para oferecer o melhor aos alunos.</p>
-
-    <div class="partners-grid">
-      <div class="partner-card">
-        <div class="partner-logo-placeholder">🏋️</div>
-        <h4>[Marca 1]</h4>
-        <p>Suplementos</p>
-      </div>
-      <div class="partner-card">
-        <div class="partner-logo-placeholder">👟</div>
-        <h4>[Marca 2]</h4>
-        <p>Vestuário fitness</p>
-      </div>
-      <div class="partner-card">
-        <div class="partner-logo-placeholder">🥗</div>
-        <h4>[Marca 3]</h4>
-        <p>Nutrição esportiva</p>
-      </div>
-      <div class="partner-card">
-        <div class="partner-logo-placeholder">📱</div>
-        <h4>[Marca 4]</h4>
-        <p>App / tecnologia</p>
-      </div>
-      <div class="partner-card add-partner">
-        <div class="add-icon" style="width:36px;height:36px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">+</div>
-        <span>Parceria?<br>Fale comigo</span>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ─── CONTATO ─── -->
-<div class="contact-section fade-in" id="contato">
-  <div class="contact-left">
-    <div class="section-tag">Contato</div>
-    <h2>VAMOS <span class="neon">TREINAR</span><br>JUNTOS?</h2>
-    <p>Dê o primeiro passo. Mande uma mensagem e em breve entro em contato para conversarmos sobre seus objetivos e montarmos o melhor plano para você.</p>
+<div class="contact-wrap fade-in" id="contato">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-tag">Contato</div>
+      <h2>VAMOS <span class="gold">TREINAR</span><br>JUNTOS?</h2>
+      <p>Dê o primeiro passo. Mande uma mensagem e em breve entro em contato para conversarmos sobre seus objetivos e montarmos o melhor plano para você.</p>
 
-    <div class="contact-info">
-      <a href="https://wa.me/5511999999999" class="contact-item" target="_blank">
-        <div class="contact-icon">💬</div>
-        <div class="contact-item-text">
-          <span class="contact-item-label">WhatsApp</span>
-          <span class="contact-item-value">(11) 99999-9999</span>
-        </div>
-        <span class="contact-arrow">→</span>
-      </a>
-      <a href="https://instagram.com/[SEU_INSTAGRAM]" class="contact-item" target="_blank">
-        <div class="contact-icon">📸</div>
-        <div class="contact-item-text">
-          <span class="contact-item-label">Instagram</span>
-          <span class="contact-item-value">@[seu_instagram]</span>
-        </div>
-        <span class="contact-arrow">→</span>
-      </a>
-      <a href="mailto:contato@email.com" class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-item-text">
-          <span class="contact-item-label">E-mail</span>
-          <span class="contact-item-value">contato@email.com</span>
-        </div>
-        <span class="contact-arrow">→</span>
-      </a>
+      <div class="contact-links">
+        <a href="https://wa.me/5511986517767" class="contact-link" target="_blank">
+          <div class="contact-icon">💬</div>
+          <div>
+            <span class="contact-link-label">WhatsApp</span>
+            <span class="contact-link-value">(11) 98651-7767</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/personal_janainamunerati?igsh=Nm5tODB1dW1xOWYw&utm_source=qr" class="contact-link" target="_blank">
+          <div class="contact-icon">📸</div>
+          <div>
+            <span class="contact-link-label">Instagram</span>
+            <span class="contact-link-value">@personal_janainamunerati</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
     </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(11) 99999-9999" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Objetivo principal</label>
+        <select required>
+          <option value="">Selecione...</option>
+          <option>Emagrecer e perder gordura</option>
+          <option>Ganhar massa muscular</option>
+          <option>Melhorar qualidade de vida</option>
+          <option>Melhorar condicionamento</option>
+          <option>Definição e estética</option>
+          <option>Reabilitação e retorno ao treino</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Modalidade de interesse</label>
+        <select>
+          <option value="">Selecione...</option>
+          <option>Presencial</option>
+          <option>Online</option>
+          <option>Quero conhecer as opções</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensagem (opcional)</label>
+        <textarea rows="3" placeholder="Conte um pouco sobre você, sua rotina e o que busca alcançar..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Quero começar agora →</button>
+    </form>
   </div>
-
-  <form class="contact-form" onsubmit="handleSubmit(event)">
-    <div class="form-row">
-      <div class="form-group">
-        <label>Nome</label>
-        <input type="text" placeholder="Seu nome" required>
-      </div>
-      <div class="form-group">
-        <label>WhatsApp</label>
-        <input type="tel" placeholder="(11) 99999-9999" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Objetivo principal</label>
-      <select required>
-        <option value="">Selecione...</option>
-        <option>🔥 Emagrecer / perder gordura</option>
-        <option>💪 Ganhar massa muscular</option>
-        <option>⚡ Melhorar condicionamento</option>
-        <option>🏃 Performance esportiva</option>
-        <option>🔄 Reabilitação / retornar ao treino</option>
-        <option>✨ Definição e estética</option>
-        <option>🤝 Parceria com marca</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Modalidade de interesse</label>
-      <select>
-        <option value="">Selecione...</option>
-        <option>Presencial</option>
-        <option>Online</option>
-        <option>Ambos</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Mensagem (opcional)</label>
-      <textarea rows="3" placeholder="Conte um pouco sobre você, sua rotina e o que busca alcançar..."></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Quero começar agora →</button>
-  </form>
 </div>
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-logo">[NOME]<span>.</span></div>
+  <div class="footer-logo">Janaina<span>.</span></div>
   <ul class="footer-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#resultados">Resultados</a></li>
-    <li><a href="#parcerias">Parcerias</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <p>© 2025 [NOME] Personal Trainer · Todos os direitos reservados</p>
+  <p>© 2025 Janaina Munerati · Personal Trainer · Todos os direitos reservados</p>
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/5511999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20treino%20personalizado."
-   class="wa-float" target="_blank" title="WhatsApp">💬</a>
+<a href="https://wa.me/5511986517767?text=Olá%20Janaína!%20Vi%20seu%20site%20e%20quero%20saber%20mais%20sobre%20o%20treino%20personalizado."
+   class="wa-float" target="_blank" title="WhatsApp Janaína">💬</a>
 
 <script>
-// Nav scroll effect
+// Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
@@ -1660,44 +1257,33 @@ window.addEventListener('scroll', () => {
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
   const isOpen = links.style.display === 'flex';
-  links.style.cssText = isOpen
-    ? ''
-    : 'display:flex; flex-direction:column; position:fixed; top:64px; left:0; right:0; background:rgba(8,8,8,0.97); padding:1.5rem 2rem; gap:1.2rem; border-bottom:1px solid rgba(200,240,0,0.15); z-index:99;';
+  links.style.cssText = isOpen ? '' :
+    'display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(8,8,8,0.97);padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid rgba(201,168,76,0.2);z-index:99;';
 }
-
-// Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    links.style.cssText = '';
-  });
+  a.addEventListener('click', () => { document.querySelector('.nav-links').style.cssText = ''; });
 });
 
 // Scroll animations
-const observer = new IntersectionObserver((entries) => {
+const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Form submit -> WhatsApp
+// Form -> WhatsApp
 function handleSubmit(e) {
   e.preventDefault();
   const f = e.target;
-  const nome = f.querySelector('input[type="text"]').value;
-  const tel = f.querySelector('input[type="tel"]').value;
-  const obj = f.querySelectorAll('select')[0].value;
-  const mod = f.querySelectorAll('select')[1].value;
-  const msg = f.querySelector('textarea').value;
-  const texto = `Olá! Me chamo ${nome}.\nObjetivo: ${obj}\nModalidade: ${mod || 'A definir'}\n${msg ? 'Sobre mim: ' + msg : ''}\nMeu WhatsApp: ${tel}`;
-  window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(texto)}`, '_blank');
+  const nome    = f.querySelector('input[type="text"]').value;
+  const tel     = f.querySelector('input[type="tel"]').value;
+  const obj     = f.querySelectorAll('select')[0].value;
+  const mod     = f.querySelectorAll('select')[1].value;
+  const msg     = f.querySelector('textarea').value;
+  const texto   = `Olá Janaína! Me chamo ${nome}.\nObjetivo: ${obj}\nModalidade: ${mod || 'A definir'}\n${msg ? 'Sobre mim: ' + msg : ''}\nMeu WhatsApp: ${tel}`;
+  window.open(`https://wa.me/5511986517767?text=${encodeURIComponent(texto)}`, '_blank');
 }
 </script>
-
 </body>
 </html>
